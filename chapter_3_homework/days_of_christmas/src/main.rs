@@ -1,8 +1,4 @@
 fn main() {
-    println!("Lets sing along now shall we?");
-    /* Write a program (taking advantage of the songs repetition" that prints the lyrics to the 12
-     * days of Christmas
-     */
     let mut day = 1;
     let gift = [
         "partridge in a pear tree",
@@ -32,11 +28,11 @@ fn main() {
 
         while day_index > 0 {
             if day == 1 {
-                println!("A {}", gift[day_index -1]);
+                println!("A {}", gift[day_index - 1]);
             } else if day > 1 && day_index == 1 {
-                println!("and a {}...", gift[day_index -1]);
+                println!("and a {}...", gift[day_index - 1]);
             } else {
-                println!("{}", gift[day_index -1]);
+                println!("{}", gift[day_index - 1]);
             }
             day_index -= 1;
         }
