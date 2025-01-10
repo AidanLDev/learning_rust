@@ -35,9 +35,16 @@ fn main() {
         width: 50,
     };
 
+    let rect2 = Rectangle {
+        height: 300,
+        width: 10,
+    };
+
+
     let hello = "Hello";
 
     println!("Using the method to workout the area: {}",rectangle1.area(&hello));
+    println!("Area of rect2 is {}", rect2.area("Oi"));
 
     println!("The area of rectangle1 is {}.", area(&rectangle1));
 }
