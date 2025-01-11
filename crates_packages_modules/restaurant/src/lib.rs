@@ -1,18 +1,6 @@
-mod front_of_house {
-    pub mod hosting {
-        pub fn add_to_waitlist() {}
+mod front_of_house;
 
-        fn seat_at_table() {}
-    }
-
-    mod serving {
-        fn take_order() {}
-
-        fn server_order() {}
-
-        fn take_payment() {}
-    }
-}
+pub use crate::front_of_house::hosting;
 
 fn deliver_order() {}
 
@@ -31,6 +19,11 @@ mod back_of_house {
         }
     }
 
+    pub enum Appertiser {
+        Soup,
+        Salad,
+    }
+
     fn fix_incorrect_order() {
         cook_order();
         super::deliver_order();
@@ -38,13 +31,13 @@ mod back_of_house {
     fn cook_order() {}
 }
 
-
 pub fn eat_at_restaurant() {
+    hosting::add_to_waitlist();
     /*
         path crate::front_of_house::hosting::add_to_waitlist(); // abs path
         front_of_house::hosting::add_to_waitlist(); // rel path
     */
-    
+
     // Order a breakfast with rye toast
     let mut meal = back_of_house::Breakfast::summer("Rye");
 
@@ -53,5 +46,6 @@ pub fn eat_at_restaurant() {
 
     println!("I'd like {} toast please.", meal.toast);
 
-
+    let order1 = back_of_house::Appertiser::Soup;
+    let order2 = back_of_house::Appertiser::Salad;
 }
