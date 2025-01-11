@@ -17,6 +17,20 @@ mod front_of_house {
 fn deliver_order() {}
 
 mod back_of_house {
+    pub struct Breakfast {
+        pub toast: String,
+        seasonal_fruit: String,
+    }
+
+    impl Breakfast {
+        pub fn summer(toast: &str) -> Breakfast {
+            Breakfast {
+                toast: String::from(toast),
+                seasonal_fruit: String::from("peaches"),
+            }
+        }
+    }
+
     fn fix_incorrect_order() {
         cook_order();
         super::deliver_order();
@@ -26,7 +40,18 @@ mod back_of_house {
 
 
 pub fn eat_at_restaurant() {
-    crate::front_of_house::hosting::add_to_waitlist();
+    /*
+        path crate::front_of_house::hosting::add_to_waitlist(); // abs path
+        front_of_house::hosting::add_to_waitlist(); // rel path
+    */
+    
+    // Order a breakfast with rye toast
+    let mut meal = back_of_house::Breakfast::summer("Rye");
 
-    front_of_house::hosting::add_to_waitlist();
+    // Change our mind about the bread we want
+    meal.toast = String::from("Brown");
+
+    println!("I'd like {} toast please.", meal.toast);
+
+
 }
