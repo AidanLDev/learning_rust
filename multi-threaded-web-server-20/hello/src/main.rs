@@ -12,6 +12,7 @@ fn main() {
     let listener = TcpListener::bind(ip_addr).unwrap();
     let pool = ThreadPool::new(4);
 
+    println!("web-server running on {ip_addr}");
     for stream in listener.incoming() {
         let stream = stream.unwrap();
 
